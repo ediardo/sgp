@@ -1,0 +1,13 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true]
+	"Estado" [shape=Mrecord, label="{Estado|id :integer\lnota :string\ltipo_estado_id :integer\lpedido_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"User" [shape=Mrecord, label="{User|id :integer\lemail :string\lencrypted_password :string\lreset_password_token :string\lreset_password_sent_at :datetime\lremember_created_at :datetime\lsign_in_count :integer\lcurrent_sign_in_at :datetime\llast_sign_in_at :datetime\lcurrent_sign_in_ip :string\llast_sign_in_ip :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"TipoEstado" [shape=Mrecord, label="{TipoEstado|id :integer\lnombre :string\ldescripcion :text\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Pedido" [shape=Mrecord, label="{Pedido|id :integer\lnum_pedido :string\ldescripcion :text\lfinalizado :boolean\lcliente_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Cliente" [shape=Mrecord, label="{Cliente|id :integer\lnum_cliente :string\lnombres :string\lapellidos :string\ltelefono :string\ldireccion :string\lemail :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"ActiveRecord::Base" -> "Estado" [label="", arrowhead="none", arrowtail="onormal"]
+	"ActiveRecord::Base" -> "User" [label="", arrowhead="none", arrowtail="onormal"]
+	"ActiveRecord::Base" -> "TipoEstado" [label="", arrowhead="none", arrowtail="onormal"]
+	"ActiveRecord::Base" -> "Pedido" [label="", arrowhead="none", arrowtail="onormal"]
+	"ActiveRecord::Base" -> "Cliente" [label="", arrowhead="none", arrowtail="onormal"]
+}

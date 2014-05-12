@@ -1,0 +1,29 @@
+<h1>Listing tipo_estados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tipo_estados.each do |tipo_estado| %>
+      <tr>
+        <td><%= tipo_estado.nombre %></td>
+        <td><%= tipo_estado.descripcion %></td>
+        <td><%= link_to 'Show', tipo_estado %></td>
+        <td><%= link_to 'Edit', edit_tipo_estado_path(tipo_estado) %></td>
+        <td><%= link_to 'Destroy', tipo_estado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tipo estado', new_tipo_estado_path %>

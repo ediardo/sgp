@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_pedido: MyString
+  descripcion: MyText
+  finalizado: false
+  cliente_id: 
+
+two:
+  num_pedido: MyString
+  descripcion: MyText
+  finalizado: false
+  cliente_id: 

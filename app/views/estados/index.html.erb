@@ -1,0 +1,33 @@
+<h1>Listado de estados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Numero de pedido</th>
+      <th>Tipo estado</th>
+      <th>Nota</th>
+      <th>Actualizado</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estados.each do |estado| %>
+      <tr>
+        <td><%= estado.pedido.num_pedido %></td>
+        <td><%= estado.tipo_estado.nombre %></td>
+        <td><%= estado.nota %></td>
+        <td><%= estado.updated_at %></td>
+        <td><%= link_to 'Mostrar', estado %></td>
+        <td><%= link_to 'Editar', edit_estado_path(estado) %></td>
+        <td><%= link_to 'Destruir', estado, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Estado', new_estado_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@estado) do |f| %>
+  <% if @estado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estado.errors.count, "error") %> prohibited this estado from being saved:</h2>
+
+      <ul>
+      <% @estado.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Numero de pedido" %><br>
+    <%= f.text_field :pedido.num_pedido %>
+  </div>
+  <div class="field">
+    <%= f.label "Estado" %><br>
+    <%= f.text_field :tipo_estado.nombre %>
+  </div>
+  <div class="field">
+    <%= f.label "Nota" %><br>
+    <%= f.text_field :nota %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
