@@ -1,37 +1,47 @@
-<h1>Listado de  clientes</h1>
-
-<table>
+<%- model_class = Cliente -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h4>Listado total de clientes registrados en el sistema</h4>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Num cliente</th>
-      <th>Nombres</th>
-      <th>Apellidos</th>
-      <th>Telefono</th>
-      <th>Direccion</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>RFC</th>
+      <th><%= "# de pedidos" %></th>
+      <th><%= model_class.human_attribute_name(:nombres) %></th>
+      <th><%= model_class.human_attribute_name(:apellidos) %></th>
+      <th><%= model_class.human_attribute_name(:telefono) %></th>
+      <th><%= model_class.human_attribute_name(:direccion) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= "Creado en" %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @clientes.each do |cliente| %>
       <tr>
-        <td><%= cliente.num_cliente %></td>
+        <td><%= link_to cliente.num_cliente, cliente_path(cliente) %></td>
+        <td><%= cliente.pedidos_count%></td>
         <td><%= cliente.nombres %></td>
         <td><%= cliente.apellidos %></td>
         <td><%= cliente.telefono %></td>
         <td><%= cliente.direccion %></td>
         <td><%= cliente.email %></td>
-        <td><%= link_to 'Mostrar', cliente %></td>
-        <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
-        <td><%= link_to 'Destruir', cliente, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+        <td><%= cliente.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_cliente_path(cliente), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      cliente_path(cliente),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Nuevo Cliente', new_cliente_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_cliente_path,
+            :class => 'btn btn-primary' %>

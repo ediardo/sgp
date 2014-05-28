@@ -1,29 +1,25 @@
-<%= form_for(@pedido) do |f| %>
-  <% if @pedido.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pedido.errors.count, "error") %> evitaron que este registro se guardara:</h2>
-
-      <ul>
-      <% @pedido.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @pedido, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :num_pedido, 'Numero de pedido', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :num_pedido, :class => 'text_field' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label "Numero de pedido" %><br>
-    <%= f.text_field :num_pedido %>
   </div>
-  <div class="field">
-    <%= f.label "Descripcion" %><br>
-    <%= f.text_area :descripcion %>
+  <div class="control-group">
+    <%= f.label :descripcion, 'Descripción', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :descripcion, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :cliente_id %><br>
-    <%= f.collection_select :cliente_id, @clientes, :id, :num_cliente %>
+  <div class="control-group">
+    <%= f.label :cliente_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :cliente_id, @clientes, :id, :num_cliente, {:include_blank => "Seleccione un cliente"}%>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit "Crear pedido" %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                pedidos_path, :class => 'btn' %>
   </div>
 <% end %>

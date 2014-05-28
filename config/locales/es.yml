@@ -1,4 +1,4 @@
-es-MX:
+es:
   date:
     abbr_day_names:
     - dom
@@ -131,12 +131,21 @@ es-MX:
         one: ! '%{model} no pudo guardarse debido a 1 error'
         other: ! '%{model} no pudo guardarse debido a %{count} errores'
   helpers:
+    actions: Acciones
+    links:
+      back: Atras
+      cancel: Cancelar
+      new: Nuevo 
+      destroy: Destruir
+      edit: Editar
+      confirm: ¿Estás seguro?
     select:
       prompt: Por favor selecciona
     submit:
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
+      cancel: Cancelar %{model}
   number:
     currency:
       format:
@@ -192,8 +201,8 @@ es-MX:
   time:
     am: am
     formats:
-      default: ! '%a, %d de %b de %Y a las %H:%M:%S %Z'
-      long: ! '%A, %d de %B de %Y a las %I:%M %p'
-      short: ! '%d de %b a las %H:%M hrs'
+      default: ! '%a, %d %b %Y %H:%M:%S %z' 
+      long: ! "%b %d" 
+      short: ! "%B %d, %Y" 
     pm: pm
 

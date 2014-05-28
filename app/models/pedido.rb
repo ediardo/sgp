@@ -1,5 +1,6 @@
 class Pedido < ActiveRecord::Base
-  belongs_to :cliente
-  validates :num_pedido, presence: true, length: {in: 1..10}
-  validates :cliente_id, presence: true
+  belongs_to :cliente, counter_cache: true 
+  has_many :estados, :validate => false
+  validates :num_pedido, uniqueness: true
+  validates_presence_of :cliente_id
 end

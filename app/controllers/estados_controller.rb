@@ -4,7 +4,7 @@ class EstadosController < ApplicationController
   # GET /estados
   # GET /estados.json
   def index
-    @estados = Estado.all
+    @estados = Estado.joins(:tipo_estado,:pedido)
   end
 
   # GET /estados/1
@@ -15,16 +15,23 @@ class EstadosController < ApplicationController
   # GET /estados/new
   def new
     @estado = Estado.new
+    @pedidos = Pedido.all
+    @tipo_estados = TipoEstado.all
   end
 
   # GET /estados/1/edit
   def edit
-  end
+    @estado = Estado.new
+    @pedidos = Pedido.all
+    @tipo_estados = TipoEstado.all
+end
 
   # POST /estados
   # POST /estados.json
   def create
     @estado = Estado.new(estado_params)
+    @pedidos = Pedido.all
+    @tipo_estados = TipoEstado.all
 
     respond_to do |format|
       if @estado.save
