@@ -11,7 +11,32 @@
   <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
   <dd><%= link_to @pedido.cliente.num_cliente, cliente_path(@pedido.cliente) %></dd>
 </dl>
+ <h3>Actualizaciones </h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th># Pedido</th>
+      <th>Cliente</th>
+      <th>Estado</th>
+      <th>Nota</th>
+      <th>Creado en</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pedido.estados.each do |estado| %>
+      <tr>
+        <td><%= link_to estado.pedido.id, pedido_path(estado.pedido) %></td>
+        <td><%= link_to estado.pedido.cliente.num_cliente, cliente_path(estado.pedido.cliente) %></td>
+        <td><%= estado.tipo_estado.nombre %></td>
+        <td><%= estado.nota %></td>
+        <td><%= estado.created_at %></td>
 
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               pedidos_path, :class => 'btn'  %>

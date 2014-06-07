@@ -11,9 +11,9 @@
       <th><%= model_class.human_attribute_name(:nombres) %></th>
       <th><%= model_class.human_attribute_name(:apellidos) %></th>
       <th><%= model_class.human_attribute_name(:telefono) %></th>
-      <th><%= model_class.human_attribute_name(:direccion) %></th>
+      <th>Dirección</th>
       <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= "Creado en" %></th>
+      <th>Creado en</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -27,7 +27,7 @@
         <td><%= cliente.telefono %></td>
         <td><%= cliente.direccion %></td>
         <td><%= cliente.email %></td>
-        <td><%= cliente.created_at %></td>
+        <td><%= cliente.updated_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_cliente_path(cliente), :class => 'btn btn-mini' %>
