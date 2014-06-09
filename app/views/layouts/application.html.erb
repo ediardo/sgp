@@ -49,10 +49,11 @@
           <a class="brand" href="#">SGP</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to 'Actualizar estado', estados_path  %></li>
-              <li><%= link_to 'Pedidos', pedidos_path  %></li>
-              <li><%= link_to 'Clientes', clientes_path  %></li>
+              <li><%= link_to 'Actualizar estado', estados_path, :title => 'Ver y crear estado de pedidos'  %></li>
+              <li><%= link_to 'Pedidos', pedidos_path, :title=> 'Ver y crear pedidos'  %></li>
+              <li><%= link_to 'Clientes', clientes_path, :title => 'Ver y crear clientes'  %></li>
             </ul>
+          <%= image_tag 'logo_avances.png', align: 'right' %>
           </div><!--/.nav-collapse -->
  <%= render 'layouts/user_widget' %>
         </div>
@@ -67,7 +68,19 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; SGP 2014</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+        <p>Avances Tecnológicos
+<br />
+Vidrio #2356
+<br />
+Col. Lafayette, C.P. 44500
+<br />
+Guadalajara, Jal.
+<br />
+(01) 3630 5026
+
+01 800 000 502</p>
       </footer>
 
     </div> <!-- /container -->

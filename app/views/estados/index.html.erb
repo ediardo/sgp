@@ -1,6 +1,8 @@
+<% title 'Listado de estados de pedidos' %>
 <%- model_class = Estado -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> de pedidos</h1>
+  <h4>Listado de todos los estados de los pedidos en el sistema</h4>
 </div>
 <table class="table table-striped">
   <thead>
@@ -10,6 +12,7 @@
       <th>Estado</th>
       <th>Nota</th>
       <th>Creado en</th>
+      <th>Actualizado en</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +23,8 @@
         <td><%= link_to estado.pedido.cliente.num_cliente, cliente_path(estado.pedido.cliente) %></td>
         <td><%= estado.tipo_estado.nombre %></td>
         <td><%= estado.nota %></td>
-        <td><%= estado.created_at %></td>
+        <td><%= "#{estado.created_at} por #{estado.created_by}"%></td>
+        <td><%= "#{estado.created_at} por #{estado.created_by}" %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_estado_path(estado), :class => 'btn btn-mini' %>

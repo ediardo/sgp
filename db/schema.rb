@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522044316) do
+ActiveRecord::Schema.define(version: 20140609072449) do
 
   create_table "clientes", force: true do |t|
     t.string   "num_cliente"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20140522044316) do
     t.integer  "pedido_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "created_by"
+    t.string   "updated_by"
   end
 
   add_index "estados", ["pedido_id"], name: "index_estados_on_pedido_id"
@@ -43,6 +45,9 @@ ActiveRecord::Schema.define(version: 20140522044316) do
     t.integer  "cliente_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "estados_count"
+    t.string   "created_by"
+    t.string   "updated_by"
   end
 
   add_index "pedidos", ["cliente_id"], name: "index_pedidos_on_cliente_id"

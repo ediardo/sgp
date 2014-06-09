@@ -32,10 +32,11 @@ end
     @estado = Estado.new(estado_params)
     @pedidos = Pedido.all
     @tipo_estados = TipoEstado.all
-
+    @estado.created_by = current_user.email
+    @estado.updated_by = current_user.email
     respond_to do |format|
       if @estado.save
-        format.html { redirect_to @estado, notice: 'Estado was successfully created.' }
+        format.html { redirect_to @estado, notice: 'Estado de pedido se creó exitosamente.' }
         format.json { render action: 'show', status: :created, location: @estado }
       else
         format.html { render action: 'new' }
@@ -47,9 +48,11 @@ end
   # PATCH/PUT /estados/1
   # PATCH/PUT /estados/1.json
   def update
+    @estado.created_by = current_user.email
+    @estado.updated_by = current_user.email
     respond_to do |format|
       if @estado.update(estado_params)
-        format.html { redirect_to @estado, notice: 'Estado was successfully updated.' }
+        format.html { redirect_to @estado, notice: 'Estado de pedido se actualizó exitosamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

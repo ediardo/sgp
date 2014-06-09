@@ -30,9 +30,11 @@ class PedidosController < ApplicationController
     @clientes = Cliente.all
     @pedido = Pedido.new(pedido_params)
     @pedido.estados.build(tipo_estado_id: 1)
+    @pedido.created_by = current_user.email
+    @pedido.updated_by = current_user.email
     respond_to do |format|
       if @pedido.save
-        format.html { redirect_to @pedido, notice: 'Pedido was successfully created.' }
+        format.html { redirect_to @pedido, notice: 'Pedido se creó exitosamente.' }
         format.json { render action: 'show', status: :created, location: @pedido }
       else
         format.html { render action: 'new' }
@@ -44,9 +46,10 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1
   # PATCH/PUT /pedidos/1.json
   def update
+    @pedido.updated_by = current_user.email
     respond_to do |format|
       if @pedido.update(pedido_params)
-        format.html { redirect_to @pedido, notice: 'Pedido was successfully updated.' }
+        format.html { redirect_to @pedido, notice: 'Pedido se actualizó exitosamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -60,7 +63,7 @@ class PedidosController < ApplicationController
   def destroy
     @pedido.destroy
     respond_to do |format|
-      format.html { redirect_to pedidos_url }
+      format.html { redirect_to pedidos_url, notice: 'Pedido se borró exitosamente.' }
       format.json { head :no_content }
     end
   end

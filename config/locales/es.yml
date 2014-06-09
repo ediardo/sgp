@@ -1,4 +1,16 @@
 es:
+  activerecord:
+    successful:
+      messages:
+        created: ' fue exitosos'
+    attributes:
+      cliente:
+        num_cliente: 'RFC'
+        descripcion: 'Descripción'
+        telefono: 'Teléfono'
+      pedido:
+        num_pedido: 'Número de pedido'
+        descripcion: 'Descripción'
   date:
     abbr_day_names:
     - dom

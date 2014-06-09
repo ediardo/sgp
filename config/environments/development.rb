@@ -26,5 +26,6 @@ Sgp::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.action_mailer.default_url_options = { host: 'localhost:8080' }
+  config.action_mailer.perform_deliveries = true
   config.assets.debug = true
 end

@@ -13,5 +13,8 @@ module ApplicationHelper
         flash_type.to_s
      end
   end
+  def title(page_title)
+    content_for :title, page_title.to_s
+  end
 end
 

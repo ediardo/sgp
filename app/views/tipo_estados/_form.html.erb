@@ -1,3 +1,13 @@
+<% if @tipo_estado.errors.full_messages.any? %>
+  <div id="error_explanation">
+  <h2><%= pluralize(@tipo_estado.errors.count, "error") %> evitaron que el registro se guardara:</h2>
+  <ul>
+  <% @tipo_estado.errors.full_messages.each do |msg| %>
+    <li> <%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
 <%= form_for @tipo_estado, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :nombre, :class => 'control-label' %>

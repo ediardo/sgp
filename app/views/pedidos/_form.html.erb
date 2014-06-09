@@ -10,13 +10,13 @@
 <% end %>
 <%= form_for @pedido, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :num_pedido, 'Numero de pedido', :class => 'control-label' %>
+    <%= f.label :num_pedido, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :num_pedido, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :descripcion, 'Descripción', :class => 'control-label' %>
+    <%= f.label :descripcion, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :descripcion, :class => 'text_field' %>
     </div>

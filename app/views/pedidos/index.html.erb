@@ -1,3 +1,4 @@
+<% title 'Listado de pedidos' %>
 <%- model_class = Pedido -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -9,7 +10,9 @@
       <th># Pedido</th>
       <th><%= model_class.human_attribute_name(:descripcion) %></th>
       <th>RFC Cliente</th>
+      <th># estados</th>
       <th>Creado en </th>
+      <th>Actualizado en </th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -18,8 +21,10 @@
       <tr>
         <td><%= link_to pedido.num_pedido, pedido_path(pedido) %></td>
         <td><%= pedido.descripcion %></td>
-        <td><%= link_to pedido.cliente.num_cliente, cliente_path(pedido.cliente) %></td>
-        <td><%= pedido.created_at %></td>
+        <td><%= link_to pedido.cliente.num_cliente, cliente_path(pedido.cliente), :title => pedido.cliente.nombres + ' '  + pedido.cliente.apellidos %></td>
+        <td><%= pedido.estados_count %></td>
+        <td><%= "#{pedido.created_at} por #{pedido.created_by}" %></td>
+        <td><%= "#{pedido.updated_at} por #{pedido.updated_by}" %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_pedido_path(pedido), :class => 'btn btn-mini' %>

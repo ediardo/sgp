@@ -20,6 +20,7 @@
       <th>Estado</th>
       <th>Nota</th>
       <th>Creado en</th>
+      <th>Actualizado en</th>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +30,8 @@
         <td><%= link_to estado.pedido.cliente.num_cliente, cliente_path(estado.pedido.cliente) %></td>
         <td><%= estado.tipo_estado.nombre %></td>
         <td><%= estado.nota %></td>
-        <td><%= estado.created_at %></td>
+        <td><%= "#{estado.created_at} por #{estado.created_by}"  %></td>
+        <td><%= "#{estado.updated_at} por #{estado.updated_by}" %></td>
 
       </tr>
     <% end %>
