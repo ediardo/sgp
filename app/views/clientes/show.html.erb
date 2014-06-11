@@ -18,6 +18,40 @@
   <dd><%= @cliente.email %></dd>
 </dl>
 
+<h3>Pedidos</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th># Pedido</th>
+      <th><%= model_class.human_attribute_name(:descripcion) %></th>
+      <th># estados</th>
+      <th>Creado en </th>
+      <th>Actualizado en </th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cliente.pedidos.each do |pedido| %>
+      <tr>
+        <td><%= link_to pedido.num_pedido, pedido_path(pedido) %></td>
+        <td><%= pedido.descripcion %></td>
+        <td><%= pedido.estados_count %></td>
+        <td><%= "#{pedido.created_at} por #{pedido.created_by}" %></td>
+        <td><%= "#{pedido.updated_at} por #{pedido.updated_by}" %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_pedido_path(pedido), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      pedido_path(pedido),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               clientes_path, :class => 'btn'  %>

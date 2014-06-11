@@ -9,7 +9,6 @@
     <tr>
       <th># Pedido</th>
       <th><%= model_class.human_attribute_name(:descripcion) %></th>
-      <th>RFC Cliente</th>
       <th># estados</th>
       <th>Creado en </th>
       <th>Actualizado en </th>
@@ -21,7 +20,6 @@
       <tr>
         <td><%= link_to pedido.num_pedido, pedido_path(pedido) %></td>
         <td><%= pedido.descripcion %></td>
-        <td><%= link_to pedido.cliente.num_cliente, cliente_path(pedido.cliente), :title => pedido.cliente.nombres + ' '  + pedido.cliente.apellidos %></td>
         <td><%= pedido.estados_count %></td>
         <td><%= "#{pedido.created_at} por #{pedido.created_by}" %></td>
         <td><%= "#{pedido.updated_at} por #{pedido.updated_by}" %></td>
